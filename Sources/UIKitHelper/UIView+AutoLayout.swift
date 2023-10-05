@@ -6,7 +6,7 @@
 
 import UIKit
 
-extension UIView {
+public extension UIView {
     func fillSuperView(insets: UIEdgeInsets = .zero) {
         self.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -28,7 +28,7 @@ extension UIView {
         }
     }
 
-    static var newFlexiView: UIView {
+    var newFlexiView: UIView {
         let view = UIView()
         view.setContentHuggingPriority(.defaultLow, for: .vertical)
         view.setContentHuggingPriority(.defaultLow, for: .horizontal)

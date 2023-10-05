@@ -6,7 +6,7 @@
 
 import UIKit
 
-extension UIStackView {
+public extension UIStackView {
     convenience init(axis: NSLayoutConstraint.Axis,
                      distribution: Distribution,
                      alignment: UIStackView.Alignment,
