@@ -27,8 +27,28 @@ public extension UIView {
             self.heightAnchor.constraint(equalToConstant: height).isActive = true
         }
     }
+    
+    func horizontalCenterTo(view: UIView? = nil, xOffset: CGFloat) {
+        guard let refView = view ?? superview else { return }
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.centerXAnchor.constraint(equalTo: refView.centerXAnchor, constant: xOffset).isActive = true
+    }
+    
+    func verticalCenterTo(view: UIView? = nil, yOffset: CGFloat) {
+        guard let refView = view ?? superview else { return }
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.centerYAnchor.constraint(equalTo: refView.centerYAnchor, constant: yOffset).isActive = true
+    }
+    
+    func centerToSuperView(offset: CGPoint = .zero) {
+        horizontalCenterTo(xOffset: offset.x)
+        verticalCenterTo(yOffset: offset.y)
+    }
+}
 
-    var newFlexiView: UIView {
+
+public extension UIView {
+    static var newFlexiView: UIView {
         let view = UIView()
         view.setContentHuggingPriority(.defaultLow, for: .vertical)
         view.setContentHuggingPriority(.defaultLow, for: .horizontal)
