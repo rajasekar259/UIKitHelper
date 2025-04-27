@@ -55,3 +55,16 @@ public extension UIView {
         return view
     }
 }
+
+
+public protocol NibLoadable {}
+
+public extension NibLoadable where Self: UIView {
+    static func loadFromNib(name: String? = nil) -> Self! {
+        let bundle = Bundle(for: Self.classForCoder())
+        let nib = UINib(nibName: name ?? String(describing: Self.self), bundle: bundle)
+        let nibView = nib.instantiate(withOwner: nil, options: nil).first as? Self
+
+        return nibView
+    }
+}
